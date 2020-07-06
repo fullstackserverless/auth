@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { StyleSheet, View, ScrollView, ImageBackground } from 'react-native'
+import { StyleSheet, View, ScrollView, ImageBackground, GestureResponderEvent } from 'react-native'
 import StatusBarAlert from 'react-native-statusbar-alert'
 import { useTheme } from '@react-navigation/native'
 import { Header } from '../Header'
@@ -18,17 +18,14 @@ const styles = StyleSheet.create({
   }
 })
 
-const BLUE = '#00FFFF'
 const RED = '#FC2847'
 
 interface AppContainerT {
   flatList?: boolean
   iconLeft?: string
-  onPress?: () => void
-  onPressRight?: () => void
-  colorLeft?: string
+  onPress?: ((event: GestureResponderEvent) => void) | undefined
+  onPressRight?: ((event: GestureResponderEvent) => void) | undefined
   iconRight?: string
-  colorRight?: string
   children?: React.ReactNode
   message?: string
   title?: string
@@ -41,9 +38,7 @@ const AppContainer = memo<AppContainerT>(
     iconLeft = 'angle-dobule-left',
     onPress = null,
     onPressRight = null,
-    colorLeft = BLUE,
     iconRight,
-    colorRight = BLUE,
     children,
     message = '',
     title,
@@ -69,8 +64,6 @@ const AppContainer = memo<AppContainerT>(
             onPress={onPress}
             onPressRight={onPressRight}
             iconLeft={iconLeft}
-            colorLeft={colorLeft}
-            colorRight={colorRight}
             iconRight={iconRight}
           />
         )}
@@ -82,7 +75,7 @@ const AppContainer = memo<AppContainerT>(
               {!flatList ? (
                 <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                   <View style={sub}>{children}</View>
-                  <Space height={200} />
+                  <Space height={100} />
                 </ScrollView>
               ) : (
                 <>

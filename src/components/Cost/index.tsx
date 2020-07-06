@@ -1,14 +1,7 @@
 import React, { memo } from 'react'
-import {
-  Platform,
-  StyleSheet,
-  StyleProp,
-  TextStyle,
-  ViewStyle,
-  View
-} from 'react-native'
+import { Platform, StyleSheet, StyleProp, TextStyle, ViewStyle, View } from 'react-native'
 import { Txt } from '../Txt'
-import { gray } from '../constants'
+import { gray } from '../../constants'
 
 const styles = StyleSheet.create({
   container: {

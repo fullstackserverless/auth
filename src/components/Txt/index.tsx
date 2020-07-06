@@ -1,12 +1,5 @@
 import React, { memo } from 'react'
-import {
-  Platform,
-  StyleProp,
-  TextStyle,
-  ViewStyle,
-  Text,
-  StyleSheet
-} from 'react-native'
+import { Platform, StyleProp, TextStyle, ViewStyle, Text, StyleSheet } from 'react-native'
 import { useTheme } from '@react-navigation/native'
 import { ScaledSheet } from 'react-native-size-matters'
 import { ifIphoneX } from 'react-native-iphone-x-helper'
@@ -23,7 +16,7 @@ import {
   KLMN,
   Dolbak,
   Narrow
-} from '../constants'
+} from '../../constants'
 
 const styles = ScaledSheet.create({
   h0Style: {
@@ -203,23 +196,7 @@ interface TxtT {
 }
 
 const Txt = memo<TxtT>(
-  ({
-    h0,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    h7,
-    h8,
-    h9,
-    body,
-    title,
-    textStyle,
-    numberOfLines,
-    ellipsizeMode
-  }) => {
+  ({ h0, h1, h2, h3, h4, h5, h6, h7, h8, h9, body, title, textStyle, numberOfLines, ellipsizeMode }) => {
     const { dark } = useTheme()
     const {
       h0Style,

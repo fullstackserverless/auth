@@ -22,11 +22,7 @@ const ButtonMarkDecision = memo<ButtonMarkDecisionT>(({ onPress }) => {
   const { container, emoji } = styles
   return (
     <TouchableOpacity onPress={onPress} style={container}>
-      <Txt
-        h7
-        title="mark decision"
-        textStyle={{ marginRight: 5, marginTop: 2 }}
-      />
+      <Txt h7 title="mark decision" textStyle={{ marginRight: 5, marginTop: 2 }} />
       <Emoji name=":unicorn_face:" style={emoji} />
     </TouchableOpacity>
   )

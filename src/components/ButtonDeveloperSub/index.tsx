@@ -1,16 +1,9 @@
 import React, { memo } from 'react'
-import {
-  Platform,
-  StyleSheet,
-  StyleProp,
-  TextStyle,
-  ViewStyle,
-  TouchableOpacity
-} from 'react-native'
+import { Platform, StyleSheet, StyleProp, TextStyle, ViewStyle, TouchableOpacity } from 'react-native'
 import { Txt } from '../Txt'
 import { ButtonRate } from '../ButtonRate'
 import { Avatar } from '../Avatar'
-import { W } from '../constants'
+import { W } from '../../constants'
 
 const styles = StyleSheet.create({
   container: {
@@ -39,23 +32,15 @@ interface ButtonDeveloperSubT {
   onPress?: () => void
 }
 
-const ButtonDeveloperSub = memo<ButtonDeveloperSubT>(
-  ({ title, viewStyle, uri, onPress, rate }) => {
-    const { container, h, rateStyle } = styles
-    return (
-      <TouchableOpacity onPress={onPress} style={[container, viewStyle]}>
-        <Avatar uri={uri} size="small" />
-        <Txt
-          h7
-          title={title}
-          textStyle={h}
-          numberOfLines={1}
-          ellipsizeMode="tail"
-        />
-        <ButtonRate title={rate} viewStyle={rateStyle} />
-      </TouchableOpacity>
-    )
-  }
-)
+const ButtonDeveloperSub = memo<ButtonDeveloperSubT>(({ title, viewStyle, uri, onPress, rate }) => {
+  const { container, h, rateStyle } = styles
+  return (
+    <TouchableOpacity onPress={onPress} style={[container, viewStyle]}>
+      <Avatar uri={uri} size="small" />
+      <Txt h7 title={title} textStyle={h} numberOfLines={1} ellipsizeMode="tail" />
+      <ButtonRate title={rate} viewStyle={rateStyle} />
+    </TouchableOpacity>
+  )
+})
 
 export { ButtonDeveloperSub }

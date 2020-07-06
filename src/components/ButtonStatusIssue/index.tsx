@@ -1,15 +1,7 @@
 import React, { memo } from 'react'
-import {
-  StyleSheet,
-  View,
-  StyleProp,
-  TextStyle,
-  ViewStyle,
-  Platform,
-  TouchableOpacity
-} from 'react-native'
+import { StyleSheet, View, StyleProp, TextStyle, ViewStyle, Platform, TouchableOpacity } from 'react-native'
 import { Txt } from '../Txt'
-import { primary, secondary, white } from '../constants'
+import { primary, secondary, white } from '../../constants'
 
 const styles = StyleSheet.create({
   container: {
@@ -38,31 +30,19 @@ interface ButtonStatusIssueT {
   onPress?: () => void
 }
 
-const ButtonStatusIssue = memo<ButtonStatusIssueT>(
-  ({ title, open, textStyle, viewStyle, onPress }) => {
-    const { h, container } = styles
-    return (
-      <View
-        style={[
-          container,
-          viewStyle,
-          { borderColor: open ? primary : secondary }
-        ]}
-      >
-        <TouchableOpacity onPress={onPress}>
-          <Txt
-            h9
-            textStyle={[
-              h,
-              textStyle,
-              { textShadowColor: secondary, color: open ? primary : secondary }
-            ]}
-            title={title}
-          />
-        </TouchableOpacity>
-      </View>
-    )
-  }
-)
+const ButtonStatusIssue = memo<ButtonStatusIssueT>(({ title, open, textStyle, viewStyle, onPress }) => {
+  const { h, container } = styles
+  return (
+    <View style={[container, viewStyle, { borderColor: open ? primary : secondary }]}>
+      <TouchableOpacity onPress={onPress}>
+        <Txt
+          h9
+          textStyle={[h, textStyle, { textShadowColor: secondary, color: open ? primary : secondary }]}
+          title={title}
+        />
+      </TouchableOpacity>
+    </View>
+  )
+})
 
 export { ButtonStatusIssue }

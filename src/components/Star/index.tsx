@@ -1,12 +1,5 @@
 import React, { memo } from 'react'
-import {
-  StyleSheet,
-  StyleProp,
-  ImageStyle,
-  ViewStyle,
-  Image,
-  TouchableOpacity
-} from 'react-native'
+import { StyleSheet, StyleProp, ImageStyle, ViewStyle, Image, TouchableOpacity } from 'react-native'
 
 const styles = StyleSheet.create({
   starStyle: {

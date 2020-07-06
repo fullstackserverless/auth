@@ -1,9 +1,9 @@
 import React, { memo } from 'react'
-import { Platform, TouchableOpacity, View, StyleSheet } from 'react-native'
+import { Platform, TouchableOpacity, View, StyleSheet, GestureResponderEvent } from 'react-native'
 import { ifIphoneX } from 'react-native-iphone-x-helper'
 import { useTheme } from '@react-navigation/native'
 import Fontisto from 'react-native-vector-icons/Fontisto'
-import { primary, secondary, W } from '../constants'
+import { primary, secondary, W } from '../../constants'
 
 const styles = StyleSheet.create({
   container: {
@@ -50,33 +50,32 @@ const styles = StyleSheet.create({
 })
 
 interface HeaderT {
+  title: string
   iconLeft?: string
   iconRight?: string
-  onPress?: () => void
-  onPressRight?: () => void
+  onPress?: ((event: GestureResponderEvent) => void) | undefined
+  onPressRight?: ((event: GestureResponderEvent) => void) | undefined
 }
 
-const Header = memo<HeaderT>(
-  ({ iconLeft, iconRight, onPress, onPressRight }) => {
-    const { container, iconLeftStyle, rightIconStyle } = styles
-    const { dark } = useTheme()
-    const color = dark ? primary : secondary
-    return (
-      <View style={container}>
-        {iconLeft && (
-          <TouchableOpacity onPress={onPress}>
-            <Fontisto name={iconLeft} style={iconLeftStyle} color={color} />
-          </TouchableOpacity>
-        )}
+const Header = memo<HeaderT>(({ iconLeft, iconRight, onPress, onPressRight }) => {
+  const { container, iconLeftStyle, rightIconStyle } = styles
+  const { dark } = useTheme()
+  const color = dark ? primary : secondary
+  return (
+    <View style={container}>
+      {iconLeft && (
+        <TouchableOpacity onPress={onPress}>
+          <Fontisto name={iconLeft} style={iconLeftStyle} color={color} />
+        </TouchableOpacity>
+      )}
 
-        {iconRight && (
-          <TouchableOpacity onPress={onPressRight}>
-            <Fontisto name={iconRight} style={rightIconStyle} color={color} />
-          </TouchableOpacity>
-        )}
-      </View>
-    )
-  }
-)
+      {iconRight && (
+        <TouchableOpacity onPress={onPressRight}>
+          <Fontisto name={iconRight} style={rightIconStyle} color={color} />
+        </TouchableOpacity>
+      )}
+    </View>
+  )
+})
 
 export { Header }

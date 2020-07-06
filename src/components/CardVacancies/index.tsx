@@ -4,7 +4,7 @@ import { Txt } from '../Txt'
 import { CardBorder } from '../CardBorder'
 import { Star } from '../Star'
 import { Space } from '../Space'
-import { W } from '../constants'
+import { W } from '../../constants'
 
 const styles = StyleSheet.create({
   container: {

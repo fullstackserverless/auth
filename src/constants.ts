@@ -19,7 +19,7 @@ export const H = win.height
 
 export const Device = {
   // eslint-disable-next-line
-  select(variants) {
+  select(variants: any) {
     if (W >= 300 && W <= 314) return variants.mobile300 || {}
     if (W >= 315 && W <= 341) return variants.mobile315 || {}
     if (W >= 342 && W <= 359) return variants.mobile342 || {}
@@ -32,10 +32,10 @@ export const Device = {
   }
 }
 
-export const goBack = (navigation) => () => navigation.goBack()
+export const goBack = (navigation: any) => () => navigation.goBack()
 
-export const onScreen = (screen, navigation, obj) => () => {
+export const onScreen = (screen: string, navigation: any, obj?: {}) => () => {
   navigation.navigate(screen, obj)
 }
 
-export const goHome = (navigation) => () => navigation.popToTop()()
+export const goHome = (navigation: any) => () => navigation.popToTop()()

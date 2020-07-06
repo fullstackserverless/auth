@@ -37,7 +37,7 @@ import {
   CardAbout,
   TextError
 } from './components'
-import { black, white } from './components/constants'
+import { black, white } from './constants'
 import {
   userData,
   cardCareer,

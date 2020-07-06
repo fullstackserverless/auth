@@ -2,18 +2,7 @@ import React, { memo } from 'react'
 import { TextInput, StyleSheet, Text, Platform } from 'react-native'
 import { useTheme } from '@react-navigation/native'
 import { ScaledSheet } from 'react-native-size-matters'
-import {
-  W,
-  primary,
-  secondary,
-  gray,
-  dimGray,
-  lightGray,
-  Etna,
-  KLMN,
-  Dolbak,
-  Narrow
-} from '../constants'
+import { W, primary, secondary, gray, dimGray, lightGray, Etna, KLMN, Dolbak, Narrow } from '../../constants'
 
 const styles = StyleSheet.create({
   inputStyle: {
@@ -36,8 +25,8 @@ interface InputT {
   placeholder?: string
   errors?: object
   touched?: object
-  onChangeText?: () => void
-  onBlur?: () => void
+  onChangeText?: (e: string | React.ChangeEvent<any>) => void
+  onBlur?: (field: string, isTouched?: boolean | undefined, shouldValidate?: boolean | undefined) => void
   multiline?: boolean
   numberOfLines?: number
   keyboardType?: // eslint-disable-line
@@ -104,9 +93,7 @@ const Input = memo<InputT>(
     return (
       <>
         <TextInput
-          style={ScaledSheet.create(
-            value.length === 0 ? placeholderStyle : input
-          )}
+          style={ScaledSheet.create(value.length === 0 ? placeholderStyle : input)}
           value={value}
           onChangeText={onChangeText}
           onBlur={onBlur}

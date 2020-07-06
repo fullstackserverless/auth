@@ -86,10 +86,7 @@ const TabCompany = memo<TabCompanyT>(({ children, setTab }) => {
   })
 
   const _onChangeState = (number: number) => () => {
-    const defaultObject = numbers.reduce(
-      (acc, el: string) => ({ ...acc, [el]: false }),
-      {}
-    )
+    const defaultObject = numbers.reduce((acc, el: string) => ({ ...acc, [el]: false }), {})
     setTab(number - 1)
     setValue({ ...defaultObject, [numbers[number - 1]]: true })
   }
@@ -105,10 +102,7 @@ const TabCompany = memo<TabCompanyT>(({ children, setTab }) => {
             return (
               <View style={{ opacity: check ? 1 : 0.5 }} key={id}>
                 <TouchableOpacity onPress={_onChangeState(id)}>
-                  <Emoji
-                    name={name}
-                    style={check ? styles[title] : styles.default}
-                  />
+                  <Emoji name={name} style={check ? styles[title] : styles.default} />
                 </TouchableOpacity>
               </View>
             )

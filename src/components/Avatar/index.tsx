@@ -1,13 +1,6 @@
 import React, { memo, useState } from 'react'
-import {
-  StyleSheet,
-  Image,
-  StyleProp,
-  ViewStyle,
-  TouchableOpacity,
-  View
-} from 'react-native'
-import { primary, secondary } from '../constants'
+import { StyleSheet, Image, StyleProp, ViewStyle, TouchableOpacity, View } from 'react-native'
+import { primary, secondary } from '../../constants'
 import { Loading } from '../Loading'
 
 const styles = StyleSheet.create({
@@ -143,11 +136,7 @@ const Avatar = memo<AvatarT>(({ uri, size = 'large', onPress, viewStyle }) => {
       <TouchableOpacity onPress={onPress} style={[container, viewStyle]}>
         <View style={[pink(size), { backgroundColor: secondary }]}>
           <View style={[blue(size), { backgroundColor: primary }]}>
-            <Image
-              style={ava(size)}
-              source={{ uri }}
-              onLoadEnd={() => setValue(true)}
-            />
+            <Image style={ava(size)} source={{ uri }} onLoadEnd={() => setValue(true)} />
             <Loading type="Pulse" size={getSize(size)} animating={value} />
           </View>
         </View>

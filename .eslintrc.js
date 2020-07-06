@@ -1,11 +1,23 @@
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
-  extends: ['airbnb', 'prettier'],
+  parser: '@typescript-eslint/parser',
+  extends: [
+    'airbnb',
+    'prettier',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript'
+  ],
   plugins: ['react', 'react-native', 'jsx-a11y', 'import', 'react-hooks'],
   parserOptions: {
+    ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
+    sourceType: 'module', // Allows for the use of imports
     ecmaFeatures: {
-      jsx: true
+      jsx: true // Allows for the parsing of JSX
     }
   },
   env: {
@@ -29,6 +41,7 @@ module.exports = {
     'comma-dangle': ['error', 'never'],
     'react/prop-types': 0,
     'no-extra-boolean-cast': 0,
+    'no-extra-semi': 'off',
     'quote-props': 0,
     'object-curly-spacing': ['error', 'always'],
     camelcase: 0,
@@ -52,12 +65,27 @@ module.exports = {
     'react-native/no-inline-styles': 0,
     'react-native/no-color-literals': 0,
     'react-native/no-raw-text': 0,
-    'consistent-return': 0
+    'consistent-return': 0,
+    'import/extensions': [
+      'error',
+      'always',
+      {
+        ts: 'never',
+        tsx: 'never',
+        js: 'never',
+        jsx: 'never'
+      }
+    ],
+    'react/display-name': 'off'
   },
   settings: {
+    react: {
+      version: 'detect' // Tells eslint-plugin-react to automatically detect the version of React to use
+    },
     'import/resolver': {
       node: {
-        extensions: ['.js', '.ios.js', '.android.js']
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        moduleDirectory: ['node_modules', 'src/']
       }
     }
   }
