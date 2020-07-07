@@ -85,7 +85,7 @@ const TabDeveloper = memo<TabDeveloperT>(({ children, setTab }) => {
     four: false
   })
 
-  const _onChangeState = (number: number) => () => {
+  const _onChangeState = (number: number) => (): void => {
     const defaultObject = numbers.reduce((acc, el: string) => ({ ...acc, [el]: false }), {})
     setTab(number - 1)
     setValue({ ...defaultObject, [numbers[number - 1]]: true })

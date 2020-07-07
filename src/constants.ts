@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Dimensions, Platform } from 'react-native'
 
 export const primary = '#50E3C2'
@@ -35,7 +37,7 @@ export const Device = {
 
 export const goBack = (navigation: any) => () => navigation.goBack()
 
-export const onScreen = (screen: string, navigation: any, obj?: any) => () => {
+export const onScreen = (screen: string, navigation: any, obj?: unknown) => () => {
   navigation.navigate(screen, obj)
 }
 
