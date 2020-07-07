@@ -6,7 +6,7 @@ import { Star } from '../Star'
 import { ButtonIconCircle } from '../ButtonIconCircle'
 import { Avatar } from '../Avatar'
 import { Space } from '../Space'
-import { Device } from '../constants'
+import { Device } from '../../constants'
 
 const styles = StyleSheet.create({
   container: {
@@ -79,15 +79,7 @@ interface HeaderMasterT {
 }
 
 const HeaderMaster = memo<HeaderMasterT>(({ user }) => {
-  const {
-    container,
-    starStyle,
-    avatarStyle,
-    balloon,
-    telephone,
-    sound,
-    h1
-  } = styles
+  const { container, starStyle, avatarStyle, balloon, telephone, sound, h1 } = styles
   const { name, uri, star } = user
   return (
     <View style={container}>

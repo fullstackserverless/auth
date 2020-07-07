@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { useTheme } from '@react-navigation/native'
 import Spinner, { SpinnerType } from 'react-native-spinkit'
+import { secondary } from '../../constants'
 
 const styles = StyleSheet.create({
   activityIndicator: {
@@ -22,15 +22,8 @@ interface LoadingT {
 }
 
 const Loading = memo<LoadingT>(({ size, animating, type }) => {
-  const {
-    colors: { secondary }
-  } = useTheme()
   const { activityIndicator } = styles
-  return (
-    <View style={activityIndicator}>
-      {!animating && <Spinner size={size} type={type} color={secondary} />}
-    </View>
-  )
+  return <View style={activityIndicator}>{!animating && <Spinner size={size} type={type} color={secondary} />}</View>
 })
 
 export { Loading }

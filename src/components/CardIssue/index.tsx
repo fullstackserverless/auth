@@ -32,20 +32,9 @@ const CardIssue = memo<Props>(({ obj, onPress }) => {
     <>
       <CardBorder>
         <TouchableOpacity onPress={onPress}>
-          <Txt
-            h1
-            title={title}
-            viewStyle={{ marginTop: 25 }}
-            numberOfLines={1}
-            ellipsizeMode="tail"
-          />
+          <Txt h1 title={title} viewStyle={{ marginTop: 25 }} numberOfLines={1} ellipsizeMode="tail" />
           <Space height={10} />
-          <Txt
-            body
-            title={description}
-            numberOfLines={4}
-            ellipsizeMode="tail"
-          />
+          <Txt body title={description} numberOfLines={4} ellipsizeMode="tail" />
           <Space height={15} />
         </TouchableOpacity>
         <ButtonComments title={comments} viewStyle={{ paddingLeft: 5 }} />

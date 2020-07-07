@@ -1,12 +1,5 @@
 import React, { memo } from 'react'
-import {
-  Platform,
-  StyleProp,
-  TextStyle,
-  ViewStyle,
-  Text,
-  StyleSheet
-} from 'react-native'
+import { Platform, StyleProp, TextStyle, ViewStyle, Text, StyleSheet } from 'react-native'
 import { useTheme } from '@react-navigation/native'
 import { ScaledSheet } from 'react-native-size-matters'
 import { ifIphoneX } from 'react-native-iphone-x-helper'
@@ -14,6 +7,7 @@ import {
   W,
   white,
   black,
+  red,
   primary,
   secondary,
   gray,
@@ -23,7 +17,7 @@ import {
   KLMN,
   Dolbak,
   Narrow
-} from '../constants'
+} from '../../constants'
 
 const styles = ScaledSheet.create({
   h0Style: {
@@ -155,6 +149,16 @@ const styles = ScaledSheet.create({
     fontSize: Platform.OS === 'ios' ? '16@s' : '16@s',
     fontFamily: Narrow
   },
+  cancelStyle: {
+    fontSize: Platform.OS === 'ios' ? '35@s' : '35@s',
+    fontFamily: Etna,
+    color: red
+  },
+  cancelStyleDark: {
+    fontSize: Platform.OS === 'ios' ? '35@s' : '35@s',
+    fontFamily: Etna,
+    color: red
+  },
   bodyStyle: {
     textAlign: 'left',
     ...ifIphoneX(
@@ -196,6 +200,7 @@ interface TxtT {
   h9?: boolean
   body?: boolean
   title: string
+  cancel?: boolean
   numberOfLines?: number
   ellipsizeMode?: 'head' | 'middle' | 'tail' | 'clip'
   textStyle?: StyleProp<TextStyle>
@@ -203,23 +208,7 @@ interface TxtT {
 }
 
 const Txt = memo<TxtT>(
-  ({
-    h0,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    h7,
-    h8,
-    h9,
-    body,
-    title,
-    textStyle,
-    numberOfLines,
-    ellipsizeMode
-  }) => {
+  ({ h0, h1, h2, h3, h4, h5, h6, h7, h8, h9, body, title, textStyle, numberOfLines, ellipsizeMode, cancel }) => {
     const { dark } = useTheme()
     const {
       h0Style,
@@ -232,6 +221,7 @@ const Txt = memo<TxtT>(
       h7Style,
       h8Style,
       h9Style,
+      cancelStyle,
       bodyStyle,
       h0StyleDark,
       h1StyleDark,
@@ -243,6 +233,7 @@ const Txt = memo<TxtT>(
       h7StyleDark,
       h8StyleDark,
       h9StyleDark,
+      cancelStyleDark,
       bodyStyleDark
     } = styles
     return (
@@ -261,6 +252,7 @@ const Txt = memo<TxtT>(
           h7 && StyleSheet.flatten([dark ? h7StyleDark : h7Style]),
           h8 && StyleSheet.flatten([dark ? h8StyleDark : h8Style]),
           h9 && StyleSheet.flatten([dark ? h9StyleDark : h9Style]),
+          cancel && StyleSheet.flatten([dark ? cancelStyleDark : cancelStyle]),
           body && StyleSheet.flatten([dark ? bodyStyleDark : bodyStyle])
         ]}
       >

@@ -2,6 +2,7 @@ import { Dimensions, Platform } from 'react-native'
 
 export const primary = '#50E3C2'
 export const secondary = '#ff06f4'
+export const red = 'red'
 export const gray = '#949494'
 export const white = '#ffffff'
 export const black = '#17191A'
@@ -19,7 +20,7 @@ export const H = win.height
 
 export const Device = {
   // eslint-disable-next-line
-  select(variants) {
+  select(variants: any) {
     if (W >= 300 && W <= 314) return variants.mobile300 || {}
     if (W >= 315 && W <= 341) return variants.mobile315 || {}
     if (W >= 342 && W <= 359) return variants.mobile342 || {}
@@ -32,10 +33,10 @@ export const Device = {
   }
 }
 
-export const goBack = (navigation) => () => navigation.goBack()
+export const goBack = (navigation: any) => () => navigation.goBack()
 
-export const onScreen = (screen, navigation, obj) => () => {
+export const onScreen = (screen: string, navigation: any, obj?: any) => () => {
   navigation.navigate(screen, obj)
 }
 
-export const goHome = (navigation) => () => navigation.popToTop()()
+export const goHome = (navigation: any) => () => navigation.popToTop()()

@@ -57,12 +57,10 @@ const cardIssueResponceSub = {
 }
 
 const cardVacancies = {
-  id: random.uuid(),
   title: 'React Native Developer',
-  rate: '5000',
   description: lorem.paragraph(),
-  company: company.companyName(),
-  cost: random.number()
+  owner: name.findName(),
+  rate: '5000'
 }
 
 const cardCareer = {

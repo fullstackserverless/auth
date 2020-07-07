@@ -1,15 +1,8 @@
-import React, { memo, useState } from 'react'
-import {
-  Platform,
-  StyleSheet,
-  StyleProp,
-  TextStyle,
-  View,
-  TouchableOpacity
-} from 'react-native'
+import React, { memo } from 'react'
+import { Platform, StyleSheet, StyleProp, TextStyle, View, TouchableOpacity } from 'react-native'
 import { useTheme } from '@react-navigation/native'
 import { Txt } from '../Txt'
-import { white, black, primary, secondary } from '../constants'
+import { white, black, primary, secondary } from '../../constants'
 
 const styles = StyleSheet.create({
   buttonStyle: {

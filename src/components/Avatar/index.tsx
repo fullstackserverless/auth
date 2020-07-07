@@ -1,13 +1,6 @@
 import React, { memo, useState } from 'react'
-import {
-  StyleSheet,
-  Image,
-  StyleProp,
-  ViewStyle,
-  TouchableOpacity,
-  View
-} from 'react-native'
-import { primary, secondary } from '../constants'
+import { StyleSheet, Image, StyleProp, ViewStyle, TouchableOpacity, View } from 'react-native'
+import { primary, secondary } from '../../constants'
 import { Loading } from '../Loading'
 
 const styles = StyleSheet.create({
@@ -104,7 +97,7 @@ const Avatar = memo<AvatarT>(({ uri, size = 'large', onPress, viewStyle }) => {
     blueXLarge
   } = styles
 
-  const ava = (status: sizeType) =>
+  const ava = (status: sizeType): object =>
     ({
       small,
       medium,
@@ -112,7 +105,7 @@ const Avatar = memo<AvatarT>(({ uri, size = 'large', onPress, viewStyle }) => {
       xLarge
     }[status])
 
-  const pink = (status: sizeType) =>
+  const pink = (status: sizeType): object =>
     ({
       small: pinkSmall,
       medium: pinkMedium,
@@ -120,7 +113,7 @@ const Avatar = memo<AvatarT>(({ uri, size = 'large', onPress, viewStyle }) => {
       xLarge: pinkXLarge
     }[status])
 
-  const blue = (status: sizeType) =>
+  const blue = (status: sizeType): object =>
     ({
       small: blueSmall,
       medium: blueMedium,
@@ -130,7 +123,7 @@ const Avatar = memo<AvatarT>(({ uri, size = 'large', onPress, viewStyle }) => {
 
   const [value, setValue] = useState<boolean>(false)
 
-  const getSize = (x: sizeType) =>
+  const getSize = (x: sizeType): number =>
     ({
       xLarge: 150,
       large: 90,
@@ -143,11 +136,7 @@ const Avatar = memo<AvatarT>(({ uri, size = 'large', onPress, viewStyle }) => {
       <TouchableOpacity onPress={onPress} style={[container, viewStyle]}>
         <View style={[pink(size), { backgroundColor: secondary }]}>
           <View style={[blue(size), { backgroundColor: primary }]}>
-            <Image
-              style={ava(size)}
-              source={{ uri }}
-              onLoadEnd={() => setValue(true)}
-            />
+            <Image style={ava(size)} source={{ uri }} onLoadEnd={(): void => setValue(true)} />
             <Loading type="Pulse" size={getSize(size)} animating={value} />
           </View>
         </View>

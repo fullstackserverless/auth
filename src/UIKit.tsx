@@ -37,7 +37,7 @@ import {
   CardAbout,
   TextError
 } from './components'
-import { black, white } from './components/constants'
+import { black, white } from './constants'
 import {
   userData,
   cardCareer,
@@ -57,13 +57,12 @@ const styles = StyleSheet.create({
   }
 })
 
-const UIKit = () => {
+const UIKit = (): React.ReactElement => {
   const [bool, setBool] = useState(false)
   const { scrollView } = styles
   const _onPress = () => console.log('click') // eslint-disable-line
   const { image, name, lorem, random } = faker
   const { dark } = useTheme()
-  const dev = true
   return (
     <>
       <ScrollView style={[scrollView, { backgroundColor: dark ? black : white }]}>
@@ -149,19 +148,19 @@ const UIKit = () => {
           <Space height={30} />
           <Formik
             initialValues={{ email: '', password: '' }}
-            onSubmit={(values) => Alert.alert(JSON.stringify(values))}
+            onSubmit={(values): void => Alert.alert(JSON.stringify(values))}
             validationSchema={Yup.object().shape({
               email: Yup.string().email().required(),
               password: Yup.string().min(6).required()
             })}
           >
-            {({ values, handleChange, errors, setFieldTouched, touched, isValid, handleSubmit }) => (
+            {({ values, handleChange, errors, setFieldTouched, touched, handleSubmit }): React.ReactElement => (
               <>
                 <Input
                   name="email"
                   value={values.email}
                   onChangeText={handleChange('email')}
-                  onBlur={() => setFieldTouched('email')}
+                  onBlur={(): void => setFieldTouched('email')}
                   placeholder="E-mail"
                   touched={touched}
                   errors={errors}
@@ -170,13 +169,13 @@ const UIKit = () => {
                   name="password"
                   value={values.password}
                   onChangeText={handleChange('password')}
-                  onBlur={() => setFieldTouched('password')}
+                  onBlur={(): void => setFieldTouched('password')}
                   placeholder="Password"
                   touched={touched}
                   errors={errors}
                 />
                 <Space height={40} />
-                <Button title="Sign In" disabled={!isValid} onPress={handleSubmit} />
+                <Button title="Sign In" onPress={handleSubmit} />
               </>
             )}
           </Formik>

@@ -1,10 +1,11 @@
+/* eslint-disable react/require-default-props */
 import React, { memo, useState } from 'react'
 import { Platform, View, StyleSheet, TouchableOpacity } from 'react-native'
 import { Txt } from '../Txt'
 import { CardBorder } from '../CardBorder'
 import { Star } from '../Star'
 import { Space } from '../Space'
-import { W } from '../constants'
+import { W } from '../../constants'
 
 const styles = StyleSheet.create({
   container: {
@@ -18,17 +19,17 @@ const styles = StyleSheet.create({
 })
 
 interface CardVacanciesT {
-  obj?: {
+  obj: {
     title: string
     description: string
     owner: string
-    rate: number
+    rate: string
   }
-  onPress?: () => void
+  onPress: () => void
   detail?: boolean
 }
 
-const CardVacancies = memo<CardVacanciesT>(({ obj, onPress, detail }) => {
+const CardVacancies = memo(({ obj, onPress, detail }: CardVacanciesT) => {
   const { title, description, owner, rate } = obj
   const { h, container } = styles
   const [star, setStar] = useState(false)
@@ -37,7 +38,7 @@ const CardVacancies = memo<CardVacanciesT>(({ obj, onPress, detail }) => {
       <CardBorder>
         <View style={container}>
           <Txt h1 title={title} textStyle={{ width: W - 110 }} numberOfLines={1} />
-          {false && <Star bool={star} onPress={() => setStar(!star)} />}
+          {false && <Star star={star} onPress={(): void => setStar(!star)} />}
         </View>
         <Space height={20} />
         <TouchableOpacity onPress={onPress}>

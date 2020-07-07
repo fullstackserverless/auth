@@ -1,10 +1,5 @@
 import React, { memo } from 'react'
-import {
-  StyleSheet,
-  StyleProp,
-  ViewStyle,
-  TouchableOpacity
-} from 'react-native'
+import { StyleSheet, StyleProp, ViewStyle, TextStyle, TouchableOpacity } from 'react-native'
 import { Txt } from '../Txt'
 
 const styles = StyleSheet.create({
@@ -22,13 +17,14 @@ interface ButtonLinkT {
   title: string
   viewStyle?: StyleProp<ViewStyle>
   onPress?: () => void
+  textStyle?: StyleProp<TextStyle>
 }
 
-const ButtonLink = memo<ButtonLinkT>(({ title, viewStyle, onPress }) => {
+const ButtonLink = memo<ButtonLinkT>(({ title, viewStyle, textStyle, onPress }) => {
   const { container, h } = styles
   return (
     <TouchableOpacity onPress={onPress} style={[container, viewStyle]}>
-      <Txt h8 title={title} textStyle={h} />
+      <Txt h8 title={title} textStyle={[h, textStyle]} />
     </TouchableOpacity>
   )
 })

@@ -25,7 +25,7 @@ const LightTheme = {
   }
 }
 
-const App = () => {
+const App = (): React.ReactElement => {
   const [value, setValue] = useState(!false)
   const dev = true
   const theme = value ? DarkTheme : LightTheme

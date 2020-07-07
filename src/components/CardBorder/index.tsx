@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { StyleSheet, StyleProp, ViewStyle, View } from 'react-native'
-import { W, primary, secondary } from '../constants'
+import { W, primary, secondary } from '../../constants'
 
 const styles = StyleSheet.create({
   containerBlue: {
@@ -33,9 +33,7 @@ const CardBorder = memo<CardBorderT>(({ children, viewStyle, border }) => {
   const borderColor = border ? 'transparent' : primary
   return (
     <View style={[containerBlue, { borderColor: secondary }]}>
-      <View style={[containerPink, viewStyle, { borderColor }]}>
-        {children}
-      </View>
+      <View style={[containerPink, viewStyle, { borderColor }]}>{children}</View>
     </View>
   )
 })

@@ -7,11 +7,11 @@
 
 module.exports = {
   transformer: {
-    getTransformOptions: async () => ({
+    getTransformOptions: async (): Promise<void> => ({
       transform: {
         experimentalImportSupport: false,
-        inlineRequires: false,
-      },
-    }),
-  },
-};
+        inlineRequires: false
+      }
+    })
+  }
+}

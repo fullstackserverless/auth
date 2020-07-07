@@ -5,8 +5,6 @@ interface SpaceT {
   height: number
 }
 
-const Space = memo<SpaceT>(({ height }) => (
-  <View style={{ height: height || 30 }} />
-))
+const Space = memo<SpaceT>(({ height }) => <View style={{ height: height || 30 }} />)
 
 export { Space }

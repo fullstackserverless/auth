@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { StyleSheet, ImageBackground, TouchableOpacity } from 'react-native'
-import { W } from '../constants'
+import { W } from '../../constants'
 
 const styles = StyleSheet.create({
   container: {
@@ -22,10 +22,7 @@ const Background = memo<BackgroundT>(({ children, uri, onPress }) => {
   const { container, img } = styles
   return (
     <TouchableOpacity onPress={onPress} style={container}>
-      <ImageBackground
-        style={img}
-        source={uri ? { uri } : require('./background.png')}
-      >
+      <ImageBackground style={img} source={uri ? { uri } : require('./background.png')}>
         {children}
       </ImageBackground>
     </TouchableOpacity>
