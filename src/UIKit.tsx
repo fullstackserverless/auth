@@ -139,7 +139,7 @@ const UIKit = (): React.ReactElement => {
           <Space height={30} />
           <ButtonDeveloperSub title={name.findName()} uri={image.avatar()} rate={String(random.number())} />
           <Space height={30} />
-          <Star star={bool} onPress={() => setBool(!bool)} />
+          <Star star={bool} onPress={(): void => setBool(!bool)} />
           <Space height={90} />
         </View>
 
