@@ -21,7 +21,7 @@ const User = ({ navigation }: UserT): ReactElement => {
       await Auth.currentAuthenticatedUser()
     }
     checkUser()
-  })
+  }, [navigation])
 
   const _onPress = async (): Promise<void> => {
     setLoading(true)

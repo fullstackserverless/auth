@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-curly-newline */
 import React, { useState, ReactElement } from 'react'
 import { Auth } from 'aws-amplify'
 import * as Keychain from 'react-native-keychain'

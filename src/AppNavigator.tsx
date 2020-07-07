@@ -14,7 +14,7 @@ export type RootStackParamList = {
   USER: undefined
 }
 
-const AppNavigator = () => {
+const AppNavigator = (): React.ReactElement => {
   return (
     <Stack.Navigator
       screenOptions={{
