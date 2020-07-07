@@ -25,7 +25,7 @@ interface InputT {
   placeholder?: string
   errors: object
   touched: object
-  onChangeText?: (e: string | React.ChangeEvent<any>) => void
+  onChangeText?: (e: string) => void
   onBlur?: () => void
   multiline?: boolean
   numberOfLines?: number
