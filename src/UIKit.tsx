@@ -207,7 +207,7 @@ const UIKit = (): React.ReactElement => {
           <Space height={30} />
           <CardInfo obj={cardInfo} />
           <Space height={30} />
-          <CardVacancies obj={cardVacancies} />
+          {/*<CardVacancies obj={cardVacancies} />*/}
           <Space height={30} />
           <CardResume obj={cardResume} obj2={cardInfo} />
           <Space height={30} />

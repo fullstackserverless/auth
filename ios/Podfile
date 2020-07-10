@@ -77,6 +77,8 @@ target 'auth' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  pod 'RNKeychain', :path => '../node_modules/react-native-keychain'
+
   target 'authTests' do
     inherit! :complete
     # Pods for testing

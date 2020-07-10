@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
-import { Switch, View } from 'react-native'
+import React, { ReactElement } from 'react'
+import Amplify from '@aws-amplify/core'
+import * as Keychain from 'react-native-keychain'
+import { useColorScheme } from 'react-native-appearance'
 import ThemeProvider from './ThemeProvider'
-import UIKit from './UIKit'
+import AppNavigator from './AppNavigator'
+import awsconfig from '../aws-exports'
 
 const DarkTheme = {
   dark: true,
@@ -25,19 +28,49 @@ const LightTheme = {
   }
 }
 
-const App = (): React.ReactElement => {
-  const [value, setValue] = useState(!false)
-  const dev = true
-  const theme = value ? DarkTheme : LightTheme
+const MEMORY_KEY_PREFIX = '@MyStorage:'
+let dataMemory: any = {}
+class MyStorage {
+  static syncPromise = null
+
+  static setItem(key: string, value: string): boolean {
+    Keychain.setGenericPassword(MEMORY_KEY_PREFIX + key, value)
+    dataMemory[key] = value
+    return dataMemory[key]
+  }
+
+  static getItem(key: string): boolean {
+    return Object.prototype.hasOwnProperty.call(dataMemory, key) ? dataMemory[key] : undefined
+  }
+
+  static removeItem(key: string): boolean {
+    Keychain.resetGenericPassword()
+    return delete dataMemory[key]
+  }
+
+  static clear(): object {
+    dataMemory = {}
+    return dataMemory
+  }
+}
+
+Amplify.configure({
+  ...awsconfig,
+  Analytics: {
+    disabled: false
+  },
+  storage: MyStorage
+})
+
+const App = (): ReactElement => {
+  /**
+   * Subscribe to color scheme changes with a hook
+   */
+  const scheme = useColorScheme()
   return (
     <>
-      <ThemeProvider theme={theme}>
-        {dev && (
-          <View style={{ backgroundColor: value ? '#1D1E1F' : '#fff', height: 90 }}>
-            <Switch onValueChange={setValue} value={value} style={{ alignSelf: 'center', marginTop: 50 }} />
-          </View>
-        )}
-        <UIKit />
+      <ThemeProvider theme={scheme === 'dark' ? DarkTheme : LightTheme}>
+        <AppNavigator />
       </ThemeProvider>
     </>
   )
