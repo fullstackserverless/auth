@@ -15,4 +15,6 @@ YellowBox.ignoreWarnings([
   'Animated: `useNativeDriver`'
 ])
 
+window.LOG_LEVEL = 'DEBUG'
+
 AppRegistry.registerComponent(appName, () => App)

@@ -1,10 +1,11 @@
 import React, { memo } from 'react'
-import { StyleSheet, View, ScrollView, ImageBackground, GestureResponderEvent } from 'react-native'
+import { StyleSheet, View, ScrollView, GestureResponderEvent } from 'react-native'
 import StatusBarAlert from 'react-native-statusbar-alert'
 import { useTheme } from '@react-navigation/native'
 import { Header } from '../Header'
 import { Space } from '../Space'
 import { Loading } from '../Loading'
+import { black, white } from '../../constants'
 
 const styles = StyleSheet.create({
   container: {
@@ -46,9 +47,8 @@ const AppContainer = memo<AppContainerT>(
   }) => {
     const { container, sub } = styles
     const { dark } = useTheme()
-    const bg = dark ? require('./bgB.png') : require('./bgW.png')
     return (
-      <ImageBackground source={bg} style={container}>
+      <View style={[container, { backgroundColor: dark ? black : white }]}>
         <StatusBarAlert
           visible={message !== ''}
           message={message}
@@ -85,7 +85,7 @@ const AppContainer = memo<AppContainerT>(
             </>
           )}
         </>
-      </ImageBackground>
+      </View>
     )
   }
 )
